@@ -3,4 +3,4 @@ MPU6050 accelometer library for STM32 using HAL.
 www.msalamon.pl
 
 Description: 
-https://msalamon.pl/jak-chuck-norris-mierzy-temperature-patrzy-na-nia-mlx90614-na-stm32/
+https://msalamon.pl/6-stopni-swobody-z-mpu6050-na-stm32/
