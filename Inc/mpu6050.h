@@ -462,6 +462,11 @@ void MPU6050_Init(I2C_HandleTypeDef *hi2c);
 uint8_t MPU6050_GetDeviceID();
 
 //
+//	CONFIG
+//
+void MPU6050_SetDlpf(uint8_t Value);
+
+//
 //	PWR_MGMT_1
 //
 void MPU6050_DeviceReset(uint8_t Reset);

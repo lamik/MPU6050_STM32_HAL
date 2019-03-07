@@ -30,6 +30,18 @@ float Acc_Scale;
 float Gyr_Scale;
 
 //
+// CONFIG
+//
+void MPU6050_SetDlpf(uint8_t Value)
+{
+	uint8_t tmp;
+	HAL_I2C_Mem_Read(i2c, MPU6050_ADDRESS, MPU6050_RA_CONFIG, 1, &tmp, 1, I2C_TIMEOUT);
+	tmp &= 0xF8;
+	tmp |= (Value & 0x7);
+	HAL_I2C_Mem_Write(i2c, MPU6050_ADDRESS, MPU6050_RA_CONFIG, 1, &tmp, 1, I2C_TIMEOUT);
+}
+
+//
 // PWR_MGMT_1
 //
 void MPU6050_DeviceReset(uint8_t Reset)
@@ -427,6 +439,7 @@ void MPU6050_Init(I2C_HandleTypeDef *hi2c)
 	MPU6050_DeviceReset(1);
     MPU6050_SetSleepEnabled(0);
     MPU6050_SetClockSource(MPU6050_CLOCK_INTERNAL);
+    MPU6050_SetDlpf(MPU6050_DLPF_BW_20);
     MPU6050_SetFullScaleGyroRange(MPU6050_GYRO_FS_250);
     MPU6050_SetFullScaleAccelRange(MPU6050_ACCEL_FS_2);
 
